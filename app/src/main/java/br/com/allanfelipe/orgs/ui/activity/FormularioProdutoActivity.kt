@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import br.com.allanfelipe.orgs.R
+import br.com.allanfelipe.orgs.dao.ProdutosDao
 import br.com.allanfelipe.orgs.model.Produto
 import java.math.BigDecimal
 
@@ -23,9 +24,9 @@ class FormularioProdutoActivity :
             val campoValor = findViewById<EditText>(R.id.valor)
             val valorEmTexto = campoValor.text.toString()
 
-            val valor = if(valorEmTexto.isBlank()){
+            val valor = if (valorEmTexto.isBlank()) {
                 BigDecimal.ZERO
-            }else{
+            } else {
                 BigDecimal(valorEmTexto)
             }
 
@@ -36,6 +37,10 @@ class FormularioProdutoActivity :
             )
 
             Log.i("FormularioProduto -> ", "onCreate: $produtoNovo")
+            val dao = ProdutosDao()
+            dao.adiciona(produtoNovo)
+            Log.i("FormularioProduto -> ", "onCreate: ${dao.buscaTodos()}")
+            finish()
         }
     }
 }
