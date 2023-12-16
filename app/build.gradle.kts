@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+
     namespace = "br.com.allanfelipe.orgs"
     compileSdk = 34
 
@@ -32,6 +33,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
